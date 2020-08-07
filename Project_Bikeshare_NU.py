@@ -65,7 +65,7 @@ def load_data(city, month, day):
     # converts the Start Time column to datetime and creates new month, day of the week, and hour of the day columns
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
-    df['week_day'] = df['Start Time'].dt.weekday_name
+    df['week_day'] = df['Start Time'].dt.day_name
     df['start_hour'] = df['Start Time'].dt.hour
 
     # combines start and end station into one column
