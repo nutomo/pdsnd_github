@@ -153,17 +153,17 @@ def user_stats(df):
     print('\nCalculating User Stats ...\n')
     start_time = time.time()
 
-    # Display counts of user types
+    # display counts of user types
     print("Counts by user types: \n",
             df["User Type"].value_counts())
 
-    # Display counts of gender
+    # display counts of gender
     if "Gender" in df:
         print("\nCounts by gender:")
         print("Male: ", df.query("Gender == 'Male'").Gender.count())
         print("Female: ", df.query("Gender == 'Female'").Gender.count())
 
-    # Display earliest, most recent, and most common year of birth
+    # display earliest, most recent, and most common year of birth
     if "Birth Year" in df:
         print("\nData regarding year of birth:")
         print("Earliest year: ", df["Birth Year"].min())
