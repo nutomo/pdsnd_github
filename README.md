@@ -24,7 +24,9 @@ Birth Year (YYYY; only for New York City and Chicago) <br />
 
 ### Software and Resources
 Python 3 <br />
-NumPy and Pandas were installed using Anaconda
+NumPy and Pandas were installed using Anaconda <br />
+Atom text editor <br />
+Executed with Terminal 
 
 [Python Standard Library](https://docs.python.org/3/library/) <br />
 [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/)
