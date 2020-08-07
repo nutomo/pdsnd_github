@@ -62,16 +62,21 @@ def load_data(city, month, day):
 
     df = pd.read_csv(CITY_DATA[city], index_col = 0)
 
+    # converts the Start Time column to datetime and creates new month, day of the week, and hour of the day columns
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
-    df['week_day'] = df['Start Time'].dt.weekday_name
+    df['week_day'] = df['Start Time'].dt.day_name
     df['start_hour'] = df['Start Time'].dt.hour
+
+    # combines start and end station into one column
     df['start_end'] = df['Start Station'].astype(str) + ' to ' + df['End Station']
 
+    # filters by month if applicable and creates new dataframe
     if month != 'all':
         month_index = data_months.index(month) + 1
         df = df[df["month"] == month_index ]
 
+    # filters by day of week if applicable and creates new dataframe
     if day != 'all':
         df = df[df["week_day"] == day.title() ]
 
@@ -148,17 +153,17 @@ def user_stats(df):
     print('\nCalculating User Stats ...\n')
     start_time = time.time()
 
-    # Display counts of user types
+    # display counts of user types
     print("Counts by user types: \n",
             df["User Type"].value_counts())
 
-    # Display counts of gender
+    # display counts of gender
     if "Gender" in df:
         print("\nCounts by gender:")
         print("Male: ", df.query("Gender == 'Male'").Gender.count())
         print("Female: ", df.query("Gender == 'Female'").Gender.count())
 
-    # Display earliest, most recent, and most common year of birth
+    # display earliest, most recent, and most common year of birth
     if "Birth Year" in df:
         print("\nData regarding year of birth:")
         print("Earliest year: ", df["Birth Year"].min())
